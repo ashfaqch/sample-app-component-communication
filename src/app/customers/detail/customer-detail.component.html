@@ -1,0 +1,20 @@
+<div class='panel panel-default'>
+    <div class='panel-heading'>Selected Customer Detail</div>
+    <div class='panel-body'>
+        <div class="row">
+            <div class='col-md-12' *ngIf='customer'>
+                <div class='row'>
+                    <div class='col-md-3'><b>Id:</b></div>
+                    <div class='col-md-9'>{{customer.id}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'><b>Name:</b></div>
+                    <div class='col-md-9'>{{customer.name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='panel-footer' *ngIf='customer'>
+        <a class="btn btn-primary" style="width:80px" [routerLink]="['/customers', customer?.id, 'edit']">Edit</a>
+    </div>
+</div>

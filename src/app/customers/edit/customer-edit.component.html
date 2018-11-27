@@ -1,0 +1,59 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+
+    <div class="panel-body">
+        <form class="form-horizontal" novalidate>
+            <fieldset *ngIf="customer">
+
+                <div class="form-group" [ngClass]="{'has-error': (customerName.touched || 
+                                               customerName.dirty || customer.id !== 0) && 
+                                               !customerName.valid }">
+                    <label class="col-md-2 control-label" for="customerName">Customer Name</label>
+
+                    <div class="col-md-8">
+                        <input class="form-control" id="customerName" type="text" placeholder="Name (required)"
+                            required minlength="3" [(ngModel)]=customer.name name="name" #customerName="ngModel" />
+                        <span class="help-block" *ngIf="(customerName.touched ||
+                                                         customerName.dirty || customer.id !== 0) &&
+                                                         customerName.errors">
+                            <span *ngIf="customerName.errors.required">
+                                Customer name is required.
+                            </span>
+                            <span *ngIf="customerName.errors.minlength">
+                                Customer name must be at least three characters.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+
+                <div class="form-group">
+                    <div class="col-md-4 col-md-offset-2">
+                        <span>
+                            <button class="btn btn-primary" style="width:80px; margin-right:10px" (click)="onSave()" [disabled]='!editForm.valid'>
+                                Save
+                            </button>
+                        </span>
+                        <span>
+                            <button class="btn btn-danger" style="width:80px" (click)="onDelete()" [disabled]='customer.id === 0'>
+                                Delete
+                            </button>
+                        </span>
+                        <span style="margin-left:10px;">
+                            <button class="btn btn-default" style="width:80px" (click)="onCancel()">
+                                Cancel
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>

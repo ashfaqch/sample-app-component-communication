@@ -1,0 +1,21 @@
+<div class='panel panel-default'>
+    <div class='panel-heading'>Filter Customers</div>
+    <div class='panel-body'>
+        <app-filter-text [filterCount]='customersFiltered?.length' (filterTextChange)='onFilterCustomer($event)'></app-filter-text>
+    </div>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-heading'>Customers</div>
+    <div class='panel-body'>
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-primary" style="width:80px" [routerLink]="['/customers', 0, 'edit']">Add New</a>
+        </div>
+        <div class="list-group">
+            <a *ngFor="let customer of customersFiltered; let i = index" class="list-group-item" (click)='onSelectedCustomer(customer)'
+                [ngClass]="{'active': customer?.id === selectedCustomer?.id}">
+                {{customer.name}}
+            </a>
+        </div>
+    </div>
+</div>

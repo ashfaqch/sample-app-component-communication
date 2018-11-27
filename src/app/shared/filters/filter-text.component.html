@@ -1,0 +1,10 @@
+<div class="form-inline">
+    <div class="form-group">
+        <label for="filterBy" style="margin-right:10px;">Filter By: </label>
+        <input class="form-control" id="filterBy" type="text" [(ngModel)]='filterText' #filterElement />
+    </div>
+</div>
+
+<div style="margin-top:10px;">
+    <p><b>Filtered Count:</b> {{message}}</p>
+</div>
