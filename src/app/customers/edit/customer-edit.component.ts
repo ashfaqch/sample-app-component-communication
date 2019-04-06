@@ -29,7 +29,7 @@ export class CustomerEditComponent implements OnInit {
         this.route.params.subscribe(
             params => {
                 const id = +params['id'];
-                this.getCustomer(id);
+                this.getCustomer(id ? id : 0);
             }
         );
     }

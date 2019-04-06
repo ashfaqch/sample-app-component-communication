@@ -8,6 +8,7 @@ import { AppPageNotFoundComponent } from './app.page-not-found.component';
 const routes: Routes = [
   { path: 'customers', component: CustomerShellComponent},
   { path: 'customers/:id/edit', component: CustomerEditComponent, canDeactivate: [ CustomerEditGuardService ] },
+  { path: 'customers/new', component: CustomerEditComponent, canDeactivate: [ CustomerEditGuardService ] },
   { path: '', redirectTo: 'customers', pathMatch: 'full' },
   { path: '**', component: AppPageNotFoundComponent }
 ];
